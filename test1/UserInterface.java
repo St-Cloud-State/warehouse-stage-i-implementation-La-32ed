@@ -21,6 +21,9 @@ public class UserInterface {
                 case 2:
                     addProduct();
                     break;
+                case 3:
+                    addwishlist();
+                    break;
                 case 4:
                     addOrder();
                     break;
@@ -29,6 +32,9 @@ public class UserInterface {
                     break;
                 case 6:
                     displayAllProducts();
+                    break;
+                case 7:
+                    displayWlist();
                     break;
                 case 8:
                     displayOrderById();
@@ -135,6 +141,42 @@ public class UserInterface {
         } else {
             System.out.println("Error adding Order.");
         }
+    }
+
+    private void addwishlist(){
+
+        String user_option = "y";
+        System.out.print("Enter user ID: ");
+        String User_id = scanner.nextLine();
+        if(warehouse.search(User_id))
+        {
+            while (user_option.equals("y")) {
+                System.out.println("Enter product ID");
+                String products_id = scanner.nextLine();
+                if(warehouse.searchproduct(products_id))
+                {
+                    warehouse.addItemToWishlist(User_id, products_id);
+                }
+                else
+                {
+                    System.out.println("prodcut does not exist");
+                }
+                System.out.println("want to keep going? y/n");
+                user_option = scanner.nextLine();
+        }
+        }
+        else
+        {
+            System.out.println("You are not in. Please add yourself");
+        }
+        
+    }
+
+    private void displayWlist()
+    {
+        System.out.println("Enter ID: ");
+        String IDs = scanner.nextLine();
+        warehouse.displayWishlist(IDs);
     }
 
     // Display all clients in the warehouse

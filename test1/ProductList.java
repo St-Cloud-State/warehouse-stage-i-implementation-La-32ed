@@ -45,8 +45,8 @@ public class ProductList implements Serializable {
         }
     }
 
-    public Iterator<Product> getProducts() {
-        return products.iterator();
+    public List<Product> getProducts() {
+        return products;
     }
 
     public boolean isEmpty() {

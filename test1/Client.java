@@ -5,11 +5,13 @@ public class Client implements Serializable {
     private String name;
     private String address;
     private String id;
+    private Wishlist wishlist;
 
     public Client(String name, String address) {
         this.name = name;
         this.address = address;
         this.id = ClientIdServer.instance().getId(); 
+        this.wishlist = new Wishlist();
     }
 
     public String getName() {
@@ -22,6 +24,14 @@ public class Client implements Serializable {
 
     public String getId() {
         return id;
+    }
+    public Wishlist getWishlist()
+    {
+        return wishlist;
+    }
+
+    public void addtowishlist(String item){
+        wishlist.addToWishlist(item);
     }
 
     public void setName(String name) {
