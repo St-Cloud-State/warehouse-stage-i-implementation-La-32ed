@@ -50,9 +50,25 @@ public class Warehouse {
        {
             if (Product.getId().equals(Pro_Id))
             {
-                System.out.println("You are in the system");
+                System.out.println("here");
                 return true;
             }
+        }
+        return false;
+    }
+
+    public boolean addItemToWishlist(String clientId, String IDS) {
+        Client client = getClientById(clientId);
+        if (client != null) {
+            for(Product product: products)
+            {
+                if (product.getId().equals(IDS)) {
+                    String item = product.getName();
+                    client.addToWishlist(item);
+
+                }
+            }
+            return true;
         }
         return false;
     }
@@ -66,5 +82,25 @@ public class Warehouse {
                 System.out.println(product);
             }
         }
+    }
+
+    public Client getClientById(String clientId) {
+        for (Client client : clients)
+         {
+            if (client.getId().equals(clientId)) 
+            {
+                return client;
+            }
+        }
+        return null;
+        }
+
+        public void displayWishlist(String clientId) {
+            Client client = getClientById(clientId);
+            if (client != null) {
+                System.out.println("Wishlist for client " + client.getName() + ": " + client.getWishlist());
+            } else {
+                System.out.println("Client not found.");
+            }
     }
 }

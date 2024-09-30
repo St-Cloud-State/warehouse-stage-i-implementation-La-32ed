@@ -1,15 +1,18 @@
 import java.io.Serializable;
+import java.util.*;
 
 public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
     private String name;
     private String address;
     private String id;
+    private List<String> wishlist;
 
     public Client(String name, String address) {
         this.name = name;
         this.address = address;
-        this.id = ClientIdServer.instance().getId(); 
+        this.id = ClientIdServer.instance().getId();
+        this.wishlist = new ArrayList<>(); 
     }
 
     public String getName() {
@@ -22,6 +25,14 @@ public class Client implements Serializable {
 
     public String getId() {
         return id;
+    }
+
+    public List<String> getWishlist() {
+        return wishlist;
+    }
+
+    public void addToWishlist(String item){
+        wishlist.add(item);
     }
 
     public void setName(String name) {

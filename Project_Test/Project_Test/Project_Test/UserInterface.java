@@ -30,6 +30,9 @@ public class UserInterface {
                 case 5:
                     displayAllProducts();
                     break;
+                case 6:
+                    displayWlist();
+                    break;
                 case 7:
                     exit = true;
                     break;
@@ -49,6 +52,13 @@ public class UserInterface {
         System.out.println("6. Display Client's Wishlist");
         System.out.println("7. Exit");
         System.out.print("Enter your choice: ");
+    }
+
+    private void displayWlist()
+    {
+        System.out.println("Enter ID: ");
+        String IDs = scanner.nextLine();
+        warehouse.displayWishlist(IDs);
     }
 
     private int getUserChoice() {
@@ -84,17 +94,30 @@ public class UserInterface {
         }
     }
     private void addwishlist(){
+
+        String user_option = "y";
         System.out.print("Enter user ID: ");
         String User_id = scanner.nextLine();
         if(warehouse.search(User_id))
         {
-            System.out.println("Hello");
-            if(warehouse.searchproduct(User_id))
+            while (user_option.equals("y")) {
+                System.out.println("Enter product ID");
+                String products_id = scanner.nextLine();
+                if(warehouse.searchproduct(products_id))
+                {
+                    warehouse.addItemToWishlist(User_id, products_id);
+                }
+                else
+                {
+                    System.out.println("prodcut does not exist");
+                }
+                System.out.println("want to keep going? y/n");
+                user_option = scanner.nextLine();
+        }
         }
         else
         {
-            System.out.println("You are not in please add");
-
+            System.out.println("You are not in.please add");
         }
         
     }
