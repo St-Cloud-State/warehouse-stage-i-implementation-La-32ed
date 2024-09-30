@@ -22,6 +22,22 @@ public class Warehouse {
         return products.add(newProduct);
     }
 
+    public boolean addItemToWishlist(String clientID, String productID)
+    {
+        Client client = getClientById(clientID);
+        if(client != null){
+            for (Product product: products)
+            {
+                if(product.getId().equals(productID)){
+                    String item = product.getName();
+                    client.addtowishlist(item);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     // Display all clients in the warehouse
     public void displayClients() {
         if (clients.isEmpty()) {
@@ -57,22 +73,6 @@ public class Warehouse {
         return false;
     }
 
-    public boolean addItemToWishlist(String clientId, String IDS) {
-        Client client = getClientById(clientId);
-        if (client != null) {
-            for(Product product: products)
-            {
-                if (product.getId().equals(IDS)) {
-                    String item = product.getName();
-                    client.addToWishlist(item);
-
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
     // Display all products in the warehouse
     public void displayProducts() {
         if (products.isEmpty()) {
@@ -98,7 +98,7 @@ public class Warehouse {
         public void displayWishlist(String clientId) {
             Client client = getClientById(clientId);
             if (client != null) {
-                System.out.println("Wishlist for client " + client.getName() + ": " + client.getWishlist());
+                System.out.println("Wishlist for client " + client.getName() + ": " + client.getWishlist().getWishlist());
             } else {
                 System.out.println("Client not found.");
             }
