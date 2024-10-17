@@ -81,11 +81,11 @@ public class Warehouse {
         public void displayWishlist(String clientId) {
             Client client = getClientById(clientId);
             if (client != null) {
-                System.out.println("Wishlist for client " + client.getName() + ": " + client.getWishlist().getWishlist());
+                System.out.println("Wishlist for client " + client.getName() + ": " + client.getWishlist().toString());
             } else {
                 System.out.println("Client not found.");
             }
-    }
+        }
 
     // Display orders by customer Id in the warehouse
     public void displayOrders(String clientId) {

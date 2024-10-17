@@ -145,7 +145,7 @@ public class UserInterface {
 
     private void addwishlist(){
         String user_option = "y";
-        while(user_option.equals('y')){
+        while(user_option.equals("y")){
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter user ID, Product ID, quantity, y/n if you want to keep going: ");
             String input = scanner.nextLine();
