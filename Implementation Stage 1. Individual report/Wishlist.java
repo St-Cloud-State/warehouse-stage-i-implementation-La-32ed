@@ -1,26 +1,37 @@
 import java.util.*;
 
 public class Wishlist {
-    private Map<String, Integer> wishlist;
+    private List<Product> products;
 
     public Wishlist() {
-        this.wishlist = new HashMap<>();
+        products = new ArrayList<>();
     }
 
-    public Map<String, Integer> getWishlist() {
-        return wishlist;
+    public boolean addProduct(Product product) {
+        return products.add(product);
     }
-
-    public void addToWishlist(String item, int quantity) {
-        wishlist.put(item, wishlist.getOrDefault(item, 0) + quantity);
+    
+    public boolean removeProduct(Product product) {
+        return products.remove(product);
     }
+    
+    
+    public List<Product> getProducts() {
+        return products;
+    }
+    
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (Map.Entry<String, Integer> entry : wishlist.entrySet()) {
-            sb.append(entry.getKey()).append(": ").append(entry.getValue()).append("\n");
+    public void displayAllProducts() {
+        int total = 0;
+        if (products.isEmpty()) {
+            System.out.println("No products found.");
+        } else {
+            for (Product product : products) {
+                System.out.println(product);
+                total += product.getSalePrice();
+
+            }
+            System.out.println("Total is: " + total);
         }
-        return sb.toString();
     }
 }

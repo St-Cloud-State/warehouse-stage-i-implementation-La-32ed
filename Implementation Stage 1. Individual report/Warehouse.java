@@ -23,7 +23,8 @@ public class Warehouse {
             Product product = newProductList.searchProductById(productID);
             if(product != null)
             {
-                client.addtowishlist(product.getName(), quanity );
+                Product wishlistitem = new Product(product.getName(), quanity, product.getId(),product.getSalePrice()*quanity);
+                client.addtowishlist(wishlistitem);
                 return true;
             }
         }
@@ -81,7 +82,8 @@ public class Warehouse {
         public void displayWishlist(String clientId) {
             Client client = getClientById(clientId);
             if (client != null) {
-                System.out.println("Wishlist for client " + client.getName() + ": \n" + client.getWishlist().toString());
+                System.out.println("Wishlist for client " + client.getName() + ":"); 
+                client.getWishlist().displayAllProducts();
             } else {
                 System.out.println("Client not found.");
             }

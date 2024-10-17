@@ -14,6 +14,13 @@ public class Product implements Serializable {
         this.id = ProductIdServer.instance().getId(); // Generates a unique product ID
     }
 
+    public Product(String name, int quantity, String id,double price) {
+        this.name = name;
+        this.quantity = quantity;
+        this.id = id;
+        this.salePrice = price;
+    }
+
     public String getName() {
         return name;
     }
