@@ -81,7 +81,7 @@ public class Warehouse {
         public void displayWishlist(String clientId) {
             Client client = getClientById(clientId);
             if (client != null) {
-                System.out.println("Wishlist for client " + client.getName() + ": " + client.getWishlist().toString());
+                System.out.println("Wishlist for client " + client.getName() + ": \n" + client.getWishlist().toString());
             } else {
                 System.out.println("Client not found.");
             }

@@ -147,7 +147,7 @@ public class UserInterface {
         String user_option = "y";
         while(user_option.equals("y")){
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter user ID, Product ID, quantity, y/n if you want to keep going: ");
+            System.out.print("Enter user ID, Product ID, quantity: ");
             String input = scanner.nextLine();
             String[] user_input = input.split (",");
 
