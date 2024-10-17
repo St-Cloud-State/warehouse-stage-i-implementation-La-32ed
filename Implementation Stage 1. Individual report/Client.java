@@ -30,8 +30,8 @@ public class Client implements Serializable {
         return wishlist;
     }
 
-    public void addtowishlist(String item){
-        wishlist.addToWishlist(item);
+    public void addtowishlist(String item, int quanity){
+        wishlist.addToWishlist(item, quanity);
     }
 
     public void setName(String name) {

@@ -15,7 +15,7 @@ public class Warehouse {
         return newProductList.addProduct(newProduct);
     }
 
-    public boolean addItemToWishlist(String clientID, String productID)
+    public boolean addItemToWishlist(String clientID, String productID, int quanity)
     {
         Client client = getClientById(clientID);
         if(client != null)
@@ -23,7 +23,7 @@ public class Warehouse {
             Product product = newProductList.searchProductById(productID);
             if(product != null)
             {
-                client.addtowishlist(product.getName());
+                client.addtowishlist(product.getName(), quanity );
                 return true;
             }
         }

@@ -144,30 +144,34 @@ public class UserInterface {
     }
 
     private void addwishlist(){
-
         String user_option = "y";
-        System.out.print("Enter user ID: ");
-        String User_id = scanner.nextLine();
-        if(warehouse.search(User_id))
-        {
-            while (user_option.equals("y")) {
-                System.out.println("Enter product ID");
-                String products_id = scanner.nextLine();
+        while(user_option.equals('y')){
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter user ID, Product ID, quantity, y/n if you want to keep going: ");
+            String input = scanner.nextLine();
+            String[] user_input = input.split (",");
+
+            String User_id = user_input[0];
+            String products_id = user_input[1];
+            int quanity = Integer.parseInt(user_input[2]);
+
+            if(warehouse.search(User_id))
+            {
                 if(warehouse.searchproduct(products_id))
                 {
-                    warehouse.addItemToWishlist(User_id, products_id);
+                    warehouse.addItemToWishlist(User_id, products_id, quanity);
                 }
                 else
                 {
                     System.out.println("prodcut does not exist");
                 }
-                System.out.println("want to keep going? y/n");
-                user_option = scanner.nextLine();
-        }
-        }
-        else
-        {
-            System.out.println("You are not in. Please add yourself");
+            }
+            else
+            {
+                System.out.println("You are not in. Please add yourself");
+            }
+            System.out.println("want to keep going? y/n");
+            user_option = scanner.nextLine();
         }
         
     }
